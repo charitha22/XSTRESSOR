@@ -52,6 +52,7 @@ wc_inputs = [
 
 wc_expressions = []
 
+t1 = time.time()
 for i in range(0, len(wc_inputs)):
 
     result = isort(wc_inputs[i])
@@ -61,17 +62,22 @@ for i in range(0, len(wc_inputs)):
 #print(wc_expressions)
 
 # now process the path conditions and build a model
-stime = time.time()
 
 path_analyzer = pa.PathAnalyzer(wc_expressions)
 path_analyzer.buildModel()
 
+
+t2 = time.time()
+
 large_scale = 100
 
-[pc, sym_store] = path_analyzer.genScaleTest(large_scale)
+[pc, sym_store, arrays] = path_analyzer.genScaleTest(large_scale)
 sol = path_analyzer.solve(pc)
 writeSolutionToFile(sol, large_scale)
 
-etime = time.time()
+t3 = time.time()
+print "Model build time = ", t2-t1
+print "Prediction  time = ", t3-t2
 
-print("Time elapsed : "+str(etime-stime))
+
+

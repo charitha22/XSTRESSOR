@@ -1,4 +1,5 @@
 from z3 import *
+import time
 import src.path_analyzer as pa
 from src.utils import writeSolutionToFile
 
@@ -97,6 +98,8 @@ class BTree:
 
 # print(s.assertions())
 
+t1 = time.time()
+
 wc_inputs = [
 [[1],-1],
 [[2,1],-1],
@@ -133,9 +136,16 @@ for i in range(0, len(wc_inputs)):
 path_analyzer = pa.PathAnalyzer(wc_expressions)
 path_analyzer.buildModel()
 
+t2 = time.time()
+
 large_scale = 20
-pc = path_analyzer.genScaleTest(large_scale)
+[pc, sym_store, arrays] = path_analyzer.genScaleTest(large_scale)
 sol = path_analyzer.solve(pc)
 writeSolutionToFile(sol, large_scale)
+
+t3 = time.time()
+print "Model build time = ", t2-t1
+print "Prediction  time = ", t3-t2
+
 
 

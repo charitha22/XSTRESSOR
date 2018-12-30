@@ -1,4 +1,5 @@
 import sys
+import time
 from z3 import *
 import src.path_analyzer as pa
 from src.utils import writeSolutionToFile
@@ -112,6 +113,9 @@ def dijkstra(graph, src, V):
     
     return [dist, path_cond]
 
+
+t1 = time.time()
+
 scales = [3,4,5,6,7,8,9,10]
 wc_inputs = []
 wc_expressions = []
@@ -142,31 +146,24 @@ for wc_input in wc_inputs:
 
     wc_expressions.append(result[1])
 
-# for c in wc_expressions[-1]:
-    # if("==" in str(c)):
-        # print(c)
-# print(" ")
-# for c in wc_expressions[-1]:
-    # if("==" not in str(c)):
-        # print(c)
-# print(" ")
-
-
-# solve(wc_expressions[-1])
-# sys.exit(-1)
-
 
 path_analyzer = pa.PathAnalyzer(wc_expressions)
 path_analyzer.buildModel() 
 
+t2 = time.time()
 # prediction
 N = 20
-[pc_N, sym_store_N] = path_analyzer.genScaleTest(N)
+[pc_N, sym_store_N, arrays] = path_analyzer.genScaleTest(N)
 
 # add initial conditions
 pc_N = pc_N + getInitConditions(sym_store_N, N+2)
 
 input_N = path_analyzer.solve(pc_N)
 writeSolutionToFile(input_N, N)
+
+t3 = time.time()
+print "Model build time = ", t2-t1
+print "Prediction  time = ", t3-t2
+
 
 

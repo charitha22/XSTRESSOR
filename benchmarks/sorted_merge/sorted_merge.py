@@ -37,7 +37,7 @@ def sorted_merge(A,B):
     return [result,path_cond]
 
 
-
+t1 = time.time()
 # worst case inputs
 wc_inputs = [
 [[1],[2]],
@@ -54,21 +54,22 @@ wc_expressions = []
 for i in range(0, len(wc_inputs)):
 
     result = sorted_merge(wc_inputs[i][0],wc_inputs[i][1])
-    #print(result[1])
     wc_expressions.append(result[1])
 
-#print(wc_expressions)
-stime = time.time()
 # now process the path conditions and build a model
 path_analyzer = pa.PathAnalyzer(wc_expressions)
 path_analyzer.buildModel()
+t2 = time.time()
 
 large_scale = 100
-pc = path_analyzer.genScaleTest(large_scale)
+
+[pc, sym_store, arrays] = path_analyzer.genScaleTest(large_scale)
 sol = path_analyzer.solve(pc)
 writeSolutionToFile(sol, large_scale)
 
-etime = time.time()
+t3 = time.time()
 
-print("Time elapsed : "+str(etime-stime))
+print "Model build time = ", t2-t1
+print "Prediction  time = ", t3-t2
+
 
