@@ -121,7 +121,7 @@ def main():
 
     t2 = time.time()
 
-    large_scale = 50
+    large_scale = int(sys.argv[1])
 
     [pc, sym_store, arrays] = path_analyzer.genScaleTest(large_scale)
     pc = pc + genInitialConstraints(sym_store, arrays) 

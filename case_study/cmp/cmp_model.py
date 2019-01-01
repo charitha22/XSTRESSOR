@@ -58,7 +58,7 @@ def main():
 
 
 
-    large_scale = 500
+    large_scale = int(sys.argv[1])
     
     [pc, sym_store, arrays] = path_analyzer.genScaleTest(large_scale)
     sol = path_analyzer.solve(pc)

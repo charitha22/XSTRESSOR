@@ -152,7 +152,7 @@ path_analyzer.buildModel()
 
 t2 = time.time()
 # prediction
-N = 20
+N = int(sys.argv[1])
 [pc_N, sym_store_N, arrays] = path_analyzer.genScaleTest(N)
 
 # add initial conditions
