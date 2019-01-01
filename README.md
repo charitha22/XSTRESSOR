@@ -5,6 +5,7 @@ input sizes by computing a set of generator models. These generator models can b
 for a given large input scale. Worst-case path condition can then be solved using SMT solver to generate a concrete worst-case input.
 
 Fore more details have a look at our ICST paper.
+
 C. Saumya, J. Koo, M. Kulkarni, and S. Bagchi, “XSTRESSOR: Automatic Generation of Large-Scale Worst-Case Test Inputs by Inferring Path Conditions,” To Appear at the 12th IEEE International Conference on Software Testing, Verification, and Validation (ICST), Apr. 2019.
 
 # Running the benchmarks
@@ -12,4 +13,13 @@ First you need to have follwing programs installed in your system.
 1. python
 2. NumPy
 3. z3
+
+Add XSTRESSOR directory to `PYTHONPATH` environment variable. 
+```
+export PYTHONPATH=$PYTHONPATH:<path_to_XSTRESSOR_directory>
+```
+Then from any benchmark or cases study directory run,
+```
+python <program_name>_model.py <INTPUT_SCALE> 
+```
 
