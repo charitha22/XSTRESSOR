@@ -32,9 +32,9 @@ INFO : Satisfiability : sat
 Model build time =  0.106421947479
 Prediction  time =  1.66337919235
 ```
-*Model build time* is the time spent for computing XSTRESSOR's generator models using the small-scale worst-case inputs. Note that this time does not include 
+*Model build time* is the time spent in seconds for computing XSTRESSOR's generator models using the small-scale worst-case inputs. Note that this time does not include 
 the time spent in exhaustive symbolic execution. We used [KLEE] (http://klee.github.io/) for exhaustive symbolic execution.
 
-*Prediction time* is the time spent for extrapolating the large-scale worst-case path condition and solving it to generate a concrete worst-case input.
+*Prediction time* is the time spent in seconds for extrapolating the large-scale worst-case path condition and solving it to generate a concrete worst-case input.
 
 
