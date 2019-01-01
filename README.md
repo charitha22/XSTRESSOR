@@ -20,6 +20,21 @@ export PYTHONPATH=$PYTHONPATH:<path_to_XSTRESSOR_directory>
 ```
 Then from any benchmark or cases study directory run,
 ```
-python <program_name>_model.py <INTPUT_SCALE> 
+python <program_name>_model.py <INPUT_SCALE> 
 ```
+This command generates a worst-case input for the specified `INPUT_SCALE`, also shows the time spent in each stage of the XSTRESSOR prediction algorithm.
+For the insertion-sort benchmark the output looks like,
+```
+~/workspace/path-predictor/benchmarks/isort$ python isort_model.py 100
+INFO : This program has 1 symbolic predicates
+INFO : Generating a test case for scale 100
+INFO : Satisfiability : sat
+Model build time =  0.106421947479
+Prediction  time =  1.66337919235
+```
+*Model build time* is the time spent for computing XSTRESSOR's generator models using the small-scale worst-case inputs. Note that this time does not include 
+the time spent in exhaustive symbolic execution.
+
+*Prediction time* is the time spent for extrapolating the large-scale worst-case path condition and solving it to generate a concrete worst-case input.
+
 
