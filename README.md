@@ -23,7 +23,7 @@ Then from any benchmark or cases study directory run,
 python <program_name>_model.py <INPUT_SCALE> 
 ```
 This command generates a worst-case input for the specified `INPUT_SCALE`, also shows the time spent in each stage of the XSTRESSOR prediction algorithm.
-For the insertion-sort benchmark the output looks like,
+For example output looks like the following for the insertion-sort benchmark.
 ```
 ~/workspace/path-predictor/benchmarks/isort$ python isort_model.py 100
 INFO : This program has 1 symbolic predicates
