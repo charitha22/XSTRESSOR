@@ -22,5 +22,4 @@ plt.show()
 plt.scatter([i for i in range(0,len(var_k))], var_k)
 plt.grid()
 plt.show()
-#print(output)
-#idea 
+

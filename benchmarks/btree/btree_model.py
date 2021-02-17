@@ -84,21 +84,6 @@ class BTree:
             self.insert(numbers[i], numbers_sym_[i])
 
 
-# nums = [10,9,8,7,6,5,4,3,2,1]
-# nums_sym_ = IntVector("nums", 10)
-# key = -1
-# key_sym_ = Int('key')
-
-# s = Solver()
-
-# tree = BTree(s)
-
-# tree.addToBTree(nums, nums_sym_)
-
-# print(tree.search(key, key_sym_))
-
-# print(s.assertions())
-
 t1 = time.time()
 
 wc_inputs = [
