@@ -10,15 +10,16 @@ index_val_list = []
 
 for l in lines:
     if("graph" in l):
-        words = l.split("graph")[1].lstrip("_").split("=")[0].rstrip(" ").split("_")
+        words = l.split("graph")[1].lstrip(
+            "_").split("=")[0].rstrip(" ").split("_")
         indices = []
         for w in words[:-1]:
 
             indices.append(int(w))
-        
+
         value = int(l.split("=")[1].lstrip("_"))
         index_val_list.append([indices, value])
-        cnt+=1
+        cnt += 1
 
 print(index_val_list)
 
@@ -29,8 +30,8 @@ ptr = 0
 for index in index_val_list:
     x_cordinate = index[0][0]
     y_cordinate = index[0][1]
-    
-    if(x_cordinate==size_of_graph):
+
+    if(x_cordinate == size_of_graph):
         x_cordinate = 0
 
     graph[x_cordinate][y_cordinate] = index[1]
